@@ -24,20 +24,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impulse Programming Challenge" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDu-Y7-1sf">
-                                <rect key="frame" x="79.5" y="245.5" width="216" height="178"/>
+                                <rect key="frame" x="0.0" y="244.5" width="375" height="178"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="215.99999999999994" id="Sn8-Nn-m4i"/>
                                     <constraint firstAttribute="height" constant="177.99999999999994" id="Yls-lz-MSU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="40"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CDu-Y7-1sf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DJN-xR-xRv"/>
-                            <constraint firstItem="CDu-Y7-1sf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="1.0543541240833747" id="dOR-be-V7H"/>
+                            <constraint firstItem="CDu-Y7-1sf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2Xd-1g-7ep"/>
+                            <constraint firstItem="CDu-Y7-1sf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="BMW-gP-AJF"/>
+                            <constraint firstItem="CDu-Y7-1sf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TiX-gZ-FxB"/>
+                            <constraint firstItem="CDu-Y7-1sf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xim-h2-B22"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

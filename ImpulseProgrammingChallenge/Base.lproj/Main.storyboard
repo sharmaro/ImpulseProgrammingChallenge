@@ -24,11 +24,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5Z-AX-MSU">
-                                <rect key="frame" x="64" y="316" width="247" height="36"/>
+                                <rect key="frame" x="60" y="315.5" width="255" height="36"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="20"/>
-                                <state key="normal" title="Start Autocomplete Suggestion">
+                                <state key="normal" title=" Start Autocomplete Suggestion ">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnTchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="dMk-zW-BiG"/>
+                                    <action selector="btnTchDragExit:" destination="BYZ-38-t0r" eventType="touchDragExit" id="HSE-BC-QNZ"/>
+                                    <action selector="btnTchDragOut:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="Dca-e6-PYe"/>
+                                    <action selector="btnTchUpIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ztX-Rb-hUs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,6 +44,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="startButton" destination="L5Z-AX-MSU" id="k2d-jU-0hx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
