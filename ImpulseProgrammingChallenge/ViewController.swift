@@ -9,8 +9,28 @@
 import UIKit
 import GooglePlaces
 
+
+// Struct that holds important info from Google Autocompelete Request response
+struct AutocompleteObj {
+    var placeId = ""
+    var mainText = ""
+    var secondaryText = ""
+    
+    // Empty initializer
+    init() {}
+    
+    // Initializer with useful params
+    init(_ placeId: String, _ mainText: String, _ secondaryText: String) {
+        self.placeId = placeId
+        self.mainText = mainText
+        self.secondaryText = secondaryText
+    }
+}
+
 class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
+    
+    var autocompleteObjsArr = [AutocompleteObj]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +51,68 @@ class ViewController: UIViewController {
         return true
     }
     
+    // MARK: My Methods
+    
+    func makeURLRequest() {
+        let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Chip&types=establishment&key=\(AppDelegate.apiKey)")! as URL
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            guard let respData = data else {
+                print("respData is nil")
+                return
+            }
+            
+            do {
+                guard let placeData = try JSONSerialization.jsonObject(with: respData, options: JSONSerialization.ReadingOptions.allowFragments)
+                    as? [String: Any] else {
+                        print("error trying to convert data to JSON")
+                        return
+                }
+                
+                self.parseResponse(placeData)
+                
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+            } .resume()
+    }
+    
+    func parseResponse(_ placeData: [String:Any]) {
+        let placesArr = placeData["predictions"]! as! NSArray
+        
+        for i in 0..<placesArr.count {
+            var autoComplObj = AutocompleteObj()
+            
+            let placesDict = placesArr[i] as! NSDictionary
+            let structFormatDict = placesDict["structured_formatting"] as! NSDictionary
+            
+            autoComplObj.placeId = placesDict["place_id"] as! String
+            autoComplObj.mainText = structFormatDict["main_text"] as! String
+            autoComplObj.secondaryText = structFormatDict["secondary_text"] as! String
+            
+            autocompleteObjsArr.append(autoComplObj)
+        }
+        
+        for obj in autocompleteObjsArr {
+            print("obj: \(obj)\n")
+        }
+    }
+    
     // MARK: @objc Methods
     
     @objc func startButtonAnim() {
         let anim = CABasicAnimation(keyPath: "borderColor")
         anim.autoreverses = true
         anim.repeatCount = .infinity
+        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         anim.fromValue = UIColor.white.cgColor
-        anim.toValue = UIColor.gray.cgColor
-        anim.duration = 1.2
+        anim.toValue = UIColor.black.cgColor
+        anim.duration = 2.0
         startButton.layer.add(anim, forKey: "")
     }
     
@@ -74,19 +147,8 @@ class ViewController: UIViewController {
         }
         
         startButton.layer.removeAllAnimations()
-    }
-}
-
-extension UIView {
-    func borderGray(_ duration: TimeInterval = 1.0, _ delay: TimeInterval = 0.0, options: UIViewAnimationOptions, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: options, animations: {
-            self.layer.borderColor = UIColor.gray.cgColor
-        }, completion: completion)
-    }
-    
-    func borderWhite(_ duration: TimeInterval = 1.0, _ delay: TimeInterval = 0.0, options: UIViewAnimationOptions, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: options, animations: {
-            self.layer.borderColor = UIColor.white.cgColor
-        }, completion: completion)
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        self.present(vc, animated: true, completion: nil)
     }
 }

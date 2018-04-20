@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -53,6 +53,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="npN-bu-VOG">
+            <objects>
+                <viewController restorationIdentifier="SearchViewController" storyboardIdentifier="SearchViewController" id="VHL-3N-WrV" customClass="SearchViewController" customModule="ImpulseProgrammingChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vP6-pc-WRH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hello" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5h-bt-dIh">
+                                <rect key="frame" x="10" y="10" width="355" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Thin" family="SF Pro Display" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QmR-GO-pXa">
+                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QmR-GO-pXa" firstAttribute="top" secondItem="g5h-bt-dIh" secondAttribute="bottom" id="2S4-bt-R9u"/>
+                            <constraint firstItem="QmR-GO-pXa" firstAttribute="leading" secondItem="qDE-qS-1lT" secondAttribute="leading" id="83F-WB-6B9"/>
+                            <constraint firstItem="g5h-bt-dIh" firstAttribute="top" secondItem="vP6-pc-WRH" secondAttribute="top" constant="10" id="K86-uQ-d83"/>
+                            <constraint firstItem="QmR-GO-pXa" firstAttribute="trailing" secondItem="qDE-qS-1lT" secondAttribute="trailing" id="LTc-pS-o29"/>
+                            <constraint firstItem="g5h-bt-dIh" firstAttribute="leading" secondItem="qDE-qS-1lT" secondAttribute="leading" constant="10" id="MCm-MZ-R0F"/>
+                            <constraint firstItem="qDE-qS-1lT" firstAttribute="trailing" secondItem="g5h-bt-dIh" secondAttribute="trailing" constant="10" id="hrU-P5-umt"/>
+                            <constraint firstItem="QmR-GO-pXa" firstAttribute="bottom" secondItem="qDE-qS-1lT" secondAttribute="bottom" id="nF2-6i-zHG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qDE-qS-1lT"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="g5h-bt-dIh" id="W47-d3-Ygr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4BW-1H-X94" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863.20000000000005" y="134.48275862068968"/>
         </scene>
     </scenes>
 </document>

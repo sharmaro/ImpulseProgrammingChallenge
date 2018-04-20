@@ -42,6 +42,7 @@
 		692B2085207DDB6E00DC76E5 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 692B205B207DDB5100DC76E5 /* SF-Pro-Text-RegularItalic.otf */; };
 		692B2086207DDB6E00DC76E5 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 692B204F207DDB4F00DC76E5 /* SF-Pro-Text-Semibold.otf */; };
 		692B2087207DDB6E00DC76E5 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 692B2050207DDB4F00DC76E5 /* SF-Pro-Text-SemiboldItalic.otf */; };
+		69EA39292089678800D35764 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA39282089678800D35764 /* SearchViewController.swift */; };
 		A7C61AC847B5BA946E8C572B /* libPods-ImpulseProgrammingChallenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1C868B05114FFDF22DED6 /* libPods-ImpulseProgrammingChallenge.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		692B2066207DDB5300DC76E5 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		692B2067207DDB5300DC76E5 /* SF-Pro-Display-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-UltralightItalic.otf"; sourceTree = "<group>"; };
 		692B2068207DDB5300DC76E5 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		69EA39282089678800D35764 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8126449791F28241EAC218A7 /* Pods-ImpulseProgrammingChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImpulseProgrammingChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-ImpulseProgrammingChallenge/Pods-ImpulseProgrammingChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		A009837019FC6AA4B19187B8 /* Pods-ImpulseProgrammingChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImpulseProgrammingChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ImpulseProgrammingChallenge/Pods-ImpulseProgrammingChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 			children = (
 				692B2039207DDB1400DC76E5 /* AppDelegate.swift */,
 				692B203B207DDB1400DC76E5 /* ViewController.swift */,
+				69EA39282089678800D35764 /* SearchViewController.swift */,
 				692B203D207DDB1400DC76E5 /* Main.storyboard */,
 				692B2042207DDB1500DC76E5 /* LaunchScreen.storyboard */,
 				692B2069207DDB5C00DC76E5 /* SF-Pro */,
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69EA39292089678800D35764 /* SearchViewController.swift in Sources */,
 				692B203C207DDB1400DC76E5 /* ViewController.swift in Sources */,
 				692B203A207DDB1400DC76E5 /* AppDelegate.swift in Sources */,
 			);
@@ -481,8 +485,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3TQD9VLAQ;
 				INFOPLIST_FILE = ImpulseProgrammingChallenge/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Rohna-Sharma.ImpulseProgrammingChallenge";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ImpulseProgrammingChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -497,8 +504,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3TQD9VLAQ;
 				INFOPLIST_FILE = ImpulseProgrammingChallenge/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Rohna-Sharma.ImpulseProgrammingChallenge";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ImpulseProgrammingChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
