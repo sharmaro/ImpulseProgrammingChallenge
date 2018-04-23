@@ -11,26 +11,9 @@ import GooglePlaces
 
 
 // Struct that holds important info from Google Autocompelete Request response
-struct AutocompleteObj {
-    var placeId = ""
-    var mainText = ""
-    var secondaryText = ""
-    
-    // Empty initializer
-    init() {}
-    
-    // Initializer with useful params
-    init(_ placeId: String, _ mainText: String, _ secondaryText: String) {
-        self.placeId = placeId
-        self.mainText = mainText
-        self.secondaryText = secondaryText
-    }
-}
 
 class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
-    
-    var autocompleteObjsArr = [AutocompleteObj]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,58 +34,6 @@ class ViewController: UIViewController {
         return true
     }
     
-    // MARK: My Methods
-    
-    func makeURLRequest() {
-        let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Chip&types=establishment&key=\(AppDelegate.apiKey)")! as URL
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-            
-            guard let respData = data else {
-                print("respData is nil")
-                return
-            }
-            
-            do {
-                guard let placeData = try JSONSerialization.jsonObject(with: respData, options: JSONSerialization.ReadingOptions.allowFragments)
-                    as? [String: Any] else {
-                        print("error trying to convert data to JSON")
-                        return
-                }
-                
-                self.parseResponse(placeData)
-                
-            } catch  {
-                print("error trying to convert data to JSON")
-                return
-            }
-            } .resume()
-    }
-    
-    func parseResponse(_ placeData: [String:Any]) {
-        let placesArr = placeData["predictions"]! as! NSArray
-        
-        for i in 0..<placesArr.count {
-            var autoComplObj = AutocompleteObj()
-            
-            let placesDict = placesArr[i] as! NSDictionary
-            let structFormatDict = placesDict["structured_formatting"] as! NSDictionary
-            
-            autoComplObj.placeId = placesDict["place_id"] as! String
-            autoComplObj.mainText = structFormatDict["main_text"] as! String
-            autoComplObj.secondaryText = structFormatDict["secondary_text"] as! String
-            
-            autocompleteObjsArr.append(autoComplObj)
-        }
-        
-        for obj in autocompleteObjsArr {
-            print("obj: \(obj)\n")
-        }
-    }
-    
     // MARK: @objc Methods
     
     @objc func startButtonAnim() {
@@ -112,7 +43,7 @@ class ViewController: UIViewController {
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         anim.fromValue = UIColor.white.cgColor
         anim.toValue = UIColor.black.cgColor
-        anim.duration = 2.0
+        anim.duration = 1.5
         startButton.layer.add(anim, forKey: "")
     }
     
@@ -148,7 +79,7 @@ class ViewController: UIViewController {
         
         startButton.layer.removeAllAnimations()
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewNavController") as! UINavigationController
         self.present(vc, animated: true, completion: nil)
     }
 }
