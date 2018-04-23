@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reachability
 
 struct AutocompleteObj {
     var placeId = ""
@@ -29,6 +30,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     var autocompleteObjsArr = [AutocompleteObj]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: AppDelegate.reachability)
+        do{
+            try AppDelegate.reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +71,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return true
     }
     
-    // MARK: Helper Methods
+    // MARK: Helper methods
     
     func makeURLRequest(_ input: String) {
         let url = URL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=\(input)&types=establishment&key=\(AppDelegate.apiKey)")
@@ -125,7 +137,27 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.makeURLRequest(text!)
     }
     
-    // MARK: UITableViewDelegate Methods
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Please try again", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi")
+            alertController.dismiss(animated: true, completion: nil)
+        case .cellular:
+            print("Reachable via Cellular")
+            alertController.dismiss(animated: true, completion: nil)
+        case .none:
+            print("Network not reachable")
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: UITableViewDelegate methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

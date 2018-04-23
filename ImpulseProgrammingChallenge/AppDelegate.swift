@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Please replace this key with your own
     static let apiKey = "AIzaSyBrQKqt5xpChz4wMMldzOUa60yb7mF9NOg"
+    
+    static let reachability = Reachability()!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

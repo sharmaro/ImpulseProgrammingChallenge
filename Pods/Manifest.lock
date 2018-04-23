@@ -9,23 +9,27 @@ PODS:
     - GooglePlaces (= 2.4.0)
   - GooglePlaces (2.4.0):
     - GoogleMaps/Base (= 2.4.0)
+  - ReachabilitySwift (4.1.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - ReachabilitySwift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - GoogleMaps
     - GooglePlacePicker
     - GooglePlaces
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
   GooglePlacePicker: 755f10343d71280c7b016823e73fbae9625dfa8a
   GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
 
-PODFILE CHECKSUM: d4586b02155a527f98203b98327f74f35b507b50
+PODFILE CHECKSUM: 06405a28bc330bb51135ef1700843c5f9108c39d
 
 COCOAPODS: 1.5.0

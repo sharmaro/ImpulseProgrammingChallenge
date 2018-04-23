@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Reachability
 
 class PopUpViewController: UIViewController {
     @IBOutlet weak var popupView: UIView!
@@ -17,6 +18,17 @@ class PopUpViewController: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     
     static var autoCompleteObj = AutocompleteObj()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: AppDelegate.reachability)
+        do{
+            try AppDelegate.reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +54,7 @@ class PopUpViewController: UIViewController {
         return false
     }
     
-    // MARK: Helper Methods
+    // MARK: Helper methods
     
     func setupLabels() {
         placeNameLbl.text = PopUpViewController.autoCompleteObj.mainText
@@ -94,29 +106,51 @@ class PopUpViewController: UIViewController {
     }
     
     func showMaps(_ coord: CLLocationCoordinate2D) {
-        let mapAlert = UIAlertController(title: "Directions", message: nil, preferredStyle: .actionSheet)
+        let mapAlertController = UIAlertController(title: "Directions", message: nil, preferredStyle: .actionSheet)
         
         let appleMapsAction = UIAlertAction(title: "Apple Maps", style: .default) { (action) in
             let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coord, addressDictionary: nil))
             mapItem.name = PopUpViewController.autoCompleteObj.mainText
             mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
         }
-        mapAlert.addAction(appleMapsAction)
+        mapAlertController.addAction(appleMapsAction)
         
         if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
             let googleMapsAction = UIAlertAction(title: "Google Maps", style: .default) { (action) in
                 UIApplication.shared.open(URL(string: "comgooglemaps://?saddr=&daddr=\(coord.latitude),\(coord.longitude)&directionsmode=driving")!, options: [:], completionHandler: nil)
             }
-            mapAlert.addAction(googleMapsAction)
+            mapAlertController.addAction(googleMapsAction)
         }
         
         if UIApplication.shared.canOpenURL(URL(string: "waze://")!) {
             let wazeMapsAction = UIAlertAction(title: "Waze", style: .default) { (action) in
                 UIApplication.shared.open(URL(string: "waze://?ll=\(coord.latitude),\(coord.longitude)&navigate=yes")!, options: [:], completionHandler: nil)
             }
-            mapAlert.addAction(wazeMapsAction)
+            mapAlertController.addAction(wazeMapsAction)
         }
-        self.present(mapAlert, animated: true, completion: nil)
+        self.present(mapAlertController, animated: true, completion: nil)
+    }
+    
+    // MARK: @objc methods
+    
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Please try again", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi")
+            alertController.dismiss(animated: true, completion: nil)
+        case .cellular:
+            print("Reachable via Cellular")
+            alertController.dismiss(animated: true, completion: nil)
+        case .none:
+            print("Network not reachable")
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     // MARK: IBAction methods

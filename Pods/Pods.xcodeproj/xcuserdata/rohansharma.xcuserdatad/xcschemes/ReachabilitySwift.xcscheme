@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3CF41B2BC90CC49C4A3142F93F4F7806"
-               BuildableName = "Pods_ImpulseProgrammingChallenge.framework"
-               BlueprintName = "Pods-ImpulseProgrammingChallenge"
+               BlueprintIdentifier = "6C43AF63EE8923ADBEDD251B74720552"
+               BuildableName = "Reachability.framework"
+               BlueprintName = "ReachabilitySwift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3CF41B2BC90CC49C4A3142F93F4F7806"
-            BuildableName = "Pods_ImpulseProgrammingChallenge.framework"
-            BlueprintName = "Pods-ImpulseProgrammingChallenge"
+            BlueprintIdentifier = "6C43AF63EE8923ADBEDD251B74720552"
+            BuildableName = "Reachability.framework"
+            BlueprintName = "ReachabilitySwift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

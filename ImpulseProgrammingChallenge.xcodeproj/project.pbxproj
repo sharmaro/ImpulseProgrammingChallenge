@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62EB13345DDE237F443DDC88 /* Pods_ImpulseProgrammingChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3AA119E4C7187FDF36FB55 /* Pods_ImpulseProgrammingChallenge.framework */; };
 		692B203A207DDB1400DC76E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692B2039207DDB1400DC76E5 /* AppDelegate.swift */; };
 		692B203C207DDB1400DC76E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692B203B207DDB1400DC76E5 /* ViewController.swift */; };
 		692B203F207DDB1400DC76E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 692B203D207DDB1400DC76E5 /* Main.storyboard */; };
@@ -44,11 +45,10 @@
 		692B2087207DDB6E00DC76E5 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 692B2050207DDB4F00DC76E5 /* SF-Pro-Text-SemiboldItalic.otf */; };
 		697A73BA208C1FC300A381E5 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A73B9208C1FC300A381E5 /* PopUpViewController.swift */; };
 		69EA39292089678800D35764 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA39282089678800D35764 /* SearchViewController.swift */; };
-		A7C61AC847B5BA946E8C572B /* libPods-ImpulseProgrammingChallenge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D1C868B05114FFDF22DED6 /* libPods-ImpulseProgrammingChallenge.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01D1C868B05114FFDF22DED6 /* libPods-ImpulseProgrammingChallenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ImpulseProgrammingChallenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E3AA119E4C7187FDF36FB55 /* Pods_ImpulseProgrammingChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImpulseProgrammingChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		692B2036207DDB1400DC76E5 /* ImpulseProgrammingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImpulseProgrammingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		692B2039207DDB1400DC76E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		692B203B207DDB1400DC76E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7C61AC847B5BA946E8C572B /* libPods-ImpulseProgrammingChallenge.a in Frameworks */,
+				62EB13345DDE237F443DDC88 /* Pods_ImpulseProgrammingChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 		6647F14A2B4534AB49D3311A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				01D1C868B05114FFDF22DED6 /* libPods-ImpulseProgrammingChallenge.a */,
+				4E3AA119E4C7187FDF36FB55 /* Pods_ImpulseProgrammingChallenge.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -204,6 +204,7 @@
 				692B2033207DDB1400DC76E5 /* Frameworks */,
 				692B2034207DDB1400DC76E5 /* Resources */,
 				10417D7301127DD1DEA75F67 /* [CP] Copy Pods Resources */,
+				789C8514660250FE02F0A4E9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,6 +312,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImpulseProgrammingChallenge/Pods-ImpulseProgrammingChallenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		789C8514660250FE02F0A4E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ImpulseProgrammingChallenge/Pods-ImpulseProgrammingChallenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ImpulseProgrammingChallenge/Pods-ImpulseProgrammingChallenge-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F29CBF36ED2EF8F4A02FF68C /* [CP] Check Pods Manifest.lock */ = {

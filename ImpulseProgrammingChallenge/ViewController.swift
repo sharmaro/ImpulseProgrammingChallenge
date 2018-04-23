@@ -8,12 +8,23 @@
 
 import UIKit
 import GooglePlaces
-
+import Reachability
 
 // Struct that holds important info from Google Autocompelete Request response
 
 class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: AppDelegate.reachability)
+        do{
+            try AppDelegate.reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +45,7 @@ class ViewController: UIViewController {
         return true
     }
     
-    // MARK: @objc Methods
+    // MARK: @objc methods
     
     @objc func startButtonAnim() {
         let anim = CABasicAnimation(keyPath: "borderColor")
@@ -51,7 +62,27 @@ class ViewController: UIViewController {
         self.view.layer.removeAllAnimations()
     }
     
-    // MARK: IBAction Methods
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Please try again", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi")
+            alertController.dismiss(animated: true, completion: nil)
+        case .cellular:
+            print("Reachable via Cellular")
+            alertController.dismiss(animated: true, completion: nil)
+        case .none:
+            print("Network not reachable")
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: IBAction methods
     
     @IBAction func btnTchDown(_ sender: Any) {
         if let btn = sender as? UIButton {
