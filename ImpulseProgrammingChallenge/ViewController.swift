@@ -10,8 +10,6 @@ import UIKit
 import GooglePlaces
 import Reachability
 
-// Struct that holds important info from Google Autocompelete Request response
-
 class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     
@@ -62,6 +60,7 @@ class ViewController: UIViewController {
         self.view.layer.removeAllAnimations()
     }
     
+    // Function for checking internet connection
     @objc func reachabilityChanged(note: Notification) {
         let reachability = note.object as! Reachability
         

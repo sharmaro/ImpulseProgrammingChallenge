@@ -9,6 +9,7 @@
 import UIKit
 import Reachability
 
+// Object for holding information about each suggested place
 struct AutocompleteObj {
     var placeId = ""
     var mainText = ""
@@ -59,7 +60,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Getting rid of the 1px separator between UINavigationBar and UIViewController for aesthetic purposes
+        // Getting rid of the 1px separator between UINavigationBar and UIViewController for aesthetic
         let navBar = self.navigationController?.navigationBar
         navBar?.barTintColor = UIColor.black
         navBar?.isTranslucent = false
@@ -73,6 +74,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: Helper methods
     
+    // Getting the response from Google Autocomplete API
     func makeURLRequest(_ input: String) {
         let url = URL(string: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=\(input)&types=establishment&key=\(AppDelegate.apiKey)")
         if url != nil {
@@ -98,7 +100,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     // Should not update UI from background thread
                     DispatchQueue.main.async {
                         self.parseResponse(placeData)
-//                        print("tableView reload data")
                         self.tableView.reloadData()
                     }
                 } catch  {
@@ -112,7 +113,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func parseResponse(_ placeData: [String:Any]) {
         autocompleteObjsArr.removeAll()
         let placesArr = placeData["predictions"]! as! NSArray
-//        print("placesArr: \(placeData)")
         
         for i in 0..<placesArr.count {
             var autoComplObj = AutocompleteObj()
@@ -124,7 +124,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             autoComplObj.mainText = structFormatDict["main_text"] as! String
             autoComplObj.secondaryText = structFormatDict["secondary_text"] as! String
             
-//            print("self.autocompleteObjsArr.append")
             autocompleteObjsArr.append(autoComplObj)
         }
     }

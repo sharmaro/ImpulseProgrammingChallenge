@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Please replace this key with your own
     static let apiKey = "AIzaSyBrQKqt5xpChz4wMMldzOUa60yb7mF9NOg"
     
+    // GitHub: https://github.com/ashleymills/Reachability.swift
+    // For internet connection
     static let reachability = Reachability()!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
