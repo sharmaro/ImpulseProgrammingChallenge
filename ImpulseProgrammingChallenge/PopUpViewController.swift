@@ -128,6 +128,9 @@ class PopUpViewController: UIViewController {
             }
             mapAlertController.addAction(wazeMapsAction)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        mapAlertController.addAction(cancelAction)
+        
         self.present(mapAlertController, animated: true, completion: nil)
     }
     

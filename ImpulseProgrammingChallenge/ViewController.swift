@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         // Will call startButtonAnim when app becomes active
         NotificationCenter.default.addObserver(self, selector: #selector(startButtonAnim), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
         
-        // Removes animations when devices is no longer active
+        // Removes animations when app is no longer active
         NotificationCenter.default.addObserver(self, selector: #selector(removeButtonAnim), name: Notification.Name.UIApplicationWillResignActive, object: nil)
     }
 
